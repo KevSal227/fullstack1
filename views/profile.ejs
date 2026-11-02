@@ -1,0 +1,53 @@
+<!-- i started with copying and pasting the code over itslef to be able to delete what i need from the boiler plate and what i dont need the following is the code reworked  -->
+<!doctype html>
+<html>
+<head>
+    <title>Salazar TimeSheet</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1>Profile Page</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-6">
+          <!-- list of my punches -->
+          <h3>Punches</h3>
+          <ul class="punches">
+          <% for(var i=0; i<punches.length; i++) {%>
+            <li class="punch">
+              <span><%= punches[i].date %></span>
+              <span><%= punches[i].time %></span>
+              <!-- click trash to delete -->
+              <button class="trash btn btn-default btn-xs" data-id="<%= punches[i]._id %>" aria-label="Delete punch">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              </button>
+            </li>
+          <% } %>
+          </ul>
+
+          <!-- add a punch -->
+          <h2>Add a punch</h2>
+        <% if (user.local.email) { %>
+          <form action="/punches" method="POST">
+            <input type="date" name="date">
+            <input type="time" name="time">
+            <button type="submit">Enter</button>
+          </form>
+        <% } %>
+        </div>
+
+    </div>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>

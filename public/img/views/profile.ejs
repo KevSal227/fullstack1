@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+    <title>Salazar Employee Sign In</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+<!-- box around everything, -->
+<div class="jumbotron" style="max-width: 800px;">
+
+    <div class="text-center">
+        <h1>User Hours </h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- left side: add a punch -->
+        <div class="col-sm-6">
+          <h3>Add a punch</h3>
+          <form action="/punches" method="POST">
+            <input type="date" name="date"><br><br>
+            <input type="time" name="time"><br><br>
+            <button type="submit" class="btn btn-primary">Enter</button>
+          </form>
+        </div>
+
+        <!-- right side: my punches with delete buttons -->
+        <div class="col-sm-6">
+          <h3>Punches</h3>
+          <ul class="list-unstyled">
+          <% for(var i=0; i<punches.length; i++) {%>
+            <li>
+              <span><%= punches[i].date %></span>
+              <span><%= punches[i].time %></span>
+              <span><button class="btn btn-danger btn-xs delete">Delete</button></span>
+            </li>
+          <% } %>
+          </ul>
+        </div>
+
+    </div>
+
+</div>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
